@@ -36,17 +36,10 @@
         <nav class="nav nav-pills flex-column mb-3">
           <a
             class="nav-link"
-            href="https://github.com/laravel/livewire-starter-kit"
+            href="https://github.com/FHP-FB5-PD11-Lab/PD11Lab"
             target="_blank"
           >
             {{ __('Repository') }}
-          </a>
-          <a
-            class="nav-link"
-            href="https://laravel.com/docs/starter-kits"
-            target="_blank"
-          >
-            {{ __('Documentation') }}
           </a>
         </nav>
         <div class="mt-auto">
@@ -121,17 +114,10 @@
       <nav class="nav nav-pills flex-column mb-3">
         <a
           class="nav-link"
-          href="https://github.com/laravel/livewire-starter-kit"
+          href="https://github.com/FHP-FB5-PD11-Lab/PD11Lab"
           target="_blank"
         >
           {{ __('Repository') }}
-        </a>
-        <a
-          class="nav-link"
-          href="https://laravel.com/docs/starter-kits"
-          target="_blank"
-        >
-          {{ __('Documentation') }}
         </a>
       </nav>
       <div class="mt-auto">

@@ -55,23 +55,12 @@
             <li class="nav-item d-none d-lg-block">
               <a
                 class="nav-link"
-                href="https://github.com/laravel/livewire-starter-kit"
+                href="https://github.com/FHP-FB5-PD11-Lab/PD11Lab"
                 target="_blank"
                 data-bs-toggle="tooltip"
                 title="{{ __('Repository') }}"
               >
                 <i class="bi bi-folder2-open"></i>
-              </a>
-            </li>
-            <li class="nav-item d-none d-lg-block">
-              <a
-                class="nav-link"
-                href="https://laravel.com/docs/starter-kits"
-                target="_blank"
-                data-bs-toggle="tooltip"
-                title="Documentation"
-              >
-                <i class="bi bi-book"></i>
               </a>
             </li>
 
@@ -158,19 +147,10 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              href="https://github.com/laravel/livewire-starter-kit"
+              href="https://github.com/FHP-FB5-PD11-Lab/PD11Lab"
               target="_blank"
             >
               {{ __('Repository') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://laravel.com/docs/starter-kits"
-              target="_blank"
-            >
-              {{ __('Documentation') }}
             </a>
           </li>
         </ul>
