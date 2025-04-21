@@ -1,6 +1,11 @@
-<div class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-    <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-</div>
-<div class="ms-1 grid flex-1 text-start text-sm">
-    <span class="mb-0.5 truncate leading-none font-semibold">Laravel Starter Kit</span>
+<div class="d-flex align-items-center">
+    <!-- Logo Icon Wrapper -->
+    <div class="d-flex align-items-center justify-content-center bg-white text-dark rounded" style="width:2rem; height:2rem;">
+        <x-app-logo-icon class="img-fluid" style="max-width:1.25rem; max-height:1.25rem;" />
+    </div>
+
+    <!-- App Name -->
+    <div class="ms-1 flex-grow-1 text-start">
+        <span class="d-block text-truncate fw-semibold small">FHP-Projekt</span>
+    </div>
 </div>

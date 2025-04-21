@@ -1,51 +1,99 @@
-<div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+<div class="card shadow-sm mx-auto" style="max-width: 24rem; width: 100%;">
+  <div class="card-body p-4">
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    {{-- Header --}}
+    <h1 class="h4 text-center mb-2">
+      {{ __('Log in to your account') }}
+    </h1>
+    <p class="text-muted text-center mb-4">
+      {{ __('Enter your email and password below to log in') }}
+    </p>
 
-    <form wire:submit="login" class="flex flex-col gap-6">
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autofocus
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+    {{-- Session Status --}}
+    @if (session('status'))
+      <div class="alert alert-success small text-center mb-3" role="alert">
+        {{ session('status') }}
+      </div>
+    @endif
 
-        <!-- Password -->
-        <div class="relative">
-            <flux:input
-                wire:model="password"
-                :label="__('Password')"
-                type="password"
-                required
-                autocomplete="current-password"
-                :placeholder="__('Password')"
-            />
+    {{-- Form --}}
+    <form wire:submit.prevent="login" novalidate>
+      {{-- Email --}}
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          {{ __('Email address') }}
+        </label>
+        <input
+          type="email"
+          id="email"
+          class="form-control @error('email') is-invalid @enderror"
+          wire:model.defer="email"
+          required
+          autocomplete="email"
+          autofocus
+          placeholder="email@example.com"
+        >
+        @error('email')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
 
-            @if (Route::has('password.request'))
-                <flux:link class="absolute end-0 top-0 text-sm" :href="route('password.request')" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </flux:link>
-            @endif
+      {{-- Password --}}
+      <div class="mb-3">
+        <label for="password" class="form-label">
+          {{ __('Password') }}
+        </label>
+        <input
+          type="password"
+          id="password"
+          class="form-control @error('password') is-invalid @enderror"
+          wire:model.defer="password"
+          required
+          autocomplete="current-password"
+          placeholder="{{ __('Password') }}"
+        >
+        @error('password')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
+
+      {{-- Remember & Forgot --}}
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check mb-0">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="remember"
+            wire:model="remember"
+          >
+          <label for="remember" class="form-check-label small">
+            {{ __('Remember me') }}
+          </label>
         </div>
+        @if (Route::has('password.request'))
+          <a href="{{ route('password.request') }}" class="small">
+            {{ __('Forgot your password?') }}
+          </a>
+        @endif
+      </div>
 
-        <!-- Remember Me -->
-        <flux:checkbox wire:model="remember" :label="__('Remember me')" />
-
-        <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
-        </div>
+      {{-- Submit --}}
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary">
+          {{ __('Log in') }}
+        </button>
+      </div>
     </form>
 
+    {{-- Sign up Link --}}
     @if (Route::has('register'))
-        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-            {{ __('Don\'t have an account?') }}
-            <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
-        </div>
+      <div class="text-center small text-muted">
+        {{ __("Don't have an account?") }}
+        <a href="{{ route('register') }}">
+          {{ __('Sign up') }}
+        </a>
+      </div>
     @endif
+
+  </div>
 </div>

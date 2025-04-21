@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
-    <head>
-        @include('partials.head')
-    </head>
-    <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
-        <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r dark:border-neutral-800">
-                <div class="absolute inset-0 bg-neutral-900"></div>
-                <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium" wire:navigate>
-                    <span class="flex h-10 w-10 items-center justify-center rounded-md">
-                        <x-app-logo-icon class="me-2 h-7 fill-current text-white" />
-                    </span>
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+    @include('partials.head')
+  </head>
+  <body class="d-flex align-items-center justify-content-center vh-100 bg-light text-dark">
+    <div class="container-fluid px-0">
+      <div class="row g-0 vh-100">
+        <!-- Left split panel -->
+        <div class="col-lg-6 d-none d-lg-flex flex-column position-relative bg-dark text-white p-4 p-lg-5">
+          <a href="{{ route('home') }}" class="d-flex align-items-center mb-4 text-decoration-none">
+            <span class="d-flex align-items-center justify-content-center me-2 rounded" style="width:4.5rem; height:2.5rem;">
+              <x-app-logo-icon class="w-100 h-100 text-white" />
+            </span>
+            <span class="fs-4 fw-medium">{{ config('app.name', 'Laravel') }}</span>
+          </a>
 
-                @php
-                    [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
-                @endphp
+          @php
+              [$message, $author] = Str::of(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
+          @endphp
 
-                <div class="relative z-20 mt-auto">
-                    <blockquote class="space-y-2">
-                        <flux:heading size="lg">&ldquo;{{ trim($message) }}&rdquo;</flux:heading>
-                        <footer><flux:heading>{{ trim($author) }}</flux:heading></footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="w-full lg:p-8">
-                <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-                    <a href="{{ route('home') }}" class="z-20 flex flex-col items-center gap-2 font-medium lg:hidden" wire:navigate>
-                        <span class="flex h-9 w-9 items-center justify-center rounded-md">
-                            <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
-                        </span>
-
-                        <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
-                    </a>
-                    {{ $slot }}
-                </div>
-            </div>
+          <div class="mt-auto">
+            <blockquote class="blockquote">
+              <p class="mb-3">&ldquo;{{ trim($message) }}&rdquo;</p>
+              <footer class="blockquote-footer text-white">{{ trim($author) }}</footer>
+            </blockquote>
+          </div>
         </div>
-        @fluxScripts
-    </body>
+
+        <!-- Right content panel -->
+        <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center p-4 p-lg-5">
+          <div class="w-100" style="max-width:22rem;">
+            <!-- Logo for small screens -->
+            <a href="{{ route('home') }}" class="d-flex flex-column align-items-center mb-4 text-decoration-none d-lg-none">
+              <span class="d-flex align-items-center justify-content-center mb-2 rounded" style="width:2.25rem; height:2.25rem;">
+                <x-app-logo-icon class="w-100 h-100 text-dark" />
+              </span>
+              <span class="visually-hidden">{{ config('app.name', 'Laravel') }}</span>
+            </a>
+
+            {{ $slot }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @fluxScripts
+  </body>
 </html>

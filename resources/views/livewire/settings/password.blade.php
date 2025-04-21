@@ -1,8 +1,11 @@
-<section class="w-full">
+<section>
     @include('partials.settings-heading')
 
-    <x-settings.layout :heading="__('Update password')" :subheading="__('Ensure your account is using a long, random password to stay secure')">
-        <form wire:submit="updatePassword" class="mt-6 space-y-6">
+    <x-settings.layout
+        :heading="__('Update password')"
+        :subheading="__('Ensure your account is using a long, random password to stay secure')"
+    >
+        <form wire:submit="updatePassword" class="mt-4 d-flex flex-column gap-4">
             <flux:input
                 wire:model="current_password"
                 :label="__('Current password')"
@@ -25,12 +28,13 @@
                 autocomplete="new-password"
             />
 
-            <div class="flex items-center gap-4">
-                <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
+            <div class="d-flex align-items-center gap-3">
+                <div class="ms-auto">
+                    <flux:button variant="primary" type="submit">
+                        {{ __('Save') }}
+                    </flux:button>
                 </div>
-
-                <x-action-message class="me-3" on="password-updated">
+                <x-action-message on="password-updated" class="ms-3">
                     {{ __('Saved.') }}
                 </x-action-message>
             </div>

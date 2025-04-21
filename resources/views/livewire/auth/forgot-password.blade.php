@@ -1,10 +1,14 @@
- <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
+<div class="d-flex flex-column gap-4">
+
+    <x-auth-header
+        :title="__('Forgot password')"
+        :description="__('Enter your email to receive a password reset link')"
+    />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
+    <form wire:submit="sendPasswordResetLink" class="d-flex flex-column gap-4">
         <!-- Email Address -->
         <flux:input
             wire:model="email"
@@ -15,11 +19,18 @@
             placeholder="email@example.com"
         />
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+        <div class="d-flex justify-content-end">
+            <flux:button variant="primary" type="submit" class="w-100">
+                {{ __('Email password reset link') }}
+            </flux:button>
+        </div>
     </form>
 
-    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">
+    <div class="d-flex justify-content-center gap-1 small text-muted">
         {{ __('Or, return to') }}
-        <flux:link :href="route('login')" wire:navigate>{{ __('log in') }}</flux:link>
+        <flux:link :href="route('login')" wire:navigate>
+            {{ __('log in') }}
+        </flux:link>
     </div>
+
 </div>

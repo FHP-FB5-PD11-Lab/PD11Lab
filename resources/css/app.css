@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "bootstrap/dist/css/bootstrap.min.css";
 @import '../../vendor/livewire/flux/dist/flux.css';
 
 @source '../views';

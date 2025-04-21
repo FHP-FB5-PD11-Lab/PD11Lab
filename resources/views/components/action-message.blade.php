@@ -8,7 +8,8 @@
     x-show.transition.out.opacity.duration.1500ms="shown"
     x-transition:leave.opacity.duration.1500ms
     style="display: none"
-    {{ $attributes->merge(['class' => 'text-sm']) }}
+    {{ $attributes->merge(['class' => 'alert alert-success small']) }}
+    role="alert"
 >
     {{ $slot->isEmpty() ? __('Saved.') : $slot }}
 </div>
