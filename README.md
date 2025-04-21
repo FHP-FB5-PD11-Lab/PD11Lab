@@ -26,4 +26,4 @@
     ```
 3. Bash command: `php artisan migrate`
 4. Check if table has been created.
-5. Debugging: For rolling back last migration: `php artisan migrate:rollback`
+5. Debugging: For rolling back last migration run `php artisan migrate:rollback` and for complete refresh of database structure `php artisan migrate:fresh`
