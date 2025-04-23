@@ -9,6 +9,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::view('/changelog', 'changelog'); // Route directly (without controller) to the changelog view
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

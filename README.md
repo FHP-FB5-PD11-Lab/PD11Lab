@@ -59,3 +59,14 @@
 4. Write unit test as known from PHPUnit
 5. Run unit test with bash command `php artisan test --filter=VersionTest`
 6. If unit test passed you are done. Not -> Debugging Model -> run unit test again
+
+### How to ad a first (static) view?
+1. Bash command: `php artisan make:view changelog`
+2. Add new route `/changelog` to routes\web.php:
+    ```
+    Route::view('/changelog', 'changelog');
+    ```
+3. Create structure in `resources\views\changelog.blade.php` with HTML
+4. Start devlopment server with bash command: `composer run dev`
+5. Check your new view under `http://localhost:8000/changelog`
+6. Now you can edit your view with live testing
