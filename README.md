@@ -47,3 +47,15 @@
     ```
 4. Check your database if data is in the table.
 5. Debugging: For rolling back last migration run `php artisan migrate:rollback` and for complete refresh of database structure `php artisan migrate:fresh`
+
+### How to add a model for our new database table?
+1. Bash command: `php artisan make:model Version`
+2. Write new model under `app\Models\Version.php`:
+    - Add `$fillable`
+    - Set casts to datatypes in `$casts` (not needed but better for security)
+    - Add relations
+    - Write functions for data transformation (no getters and setter needed if data will not be transformed)
+3. Create new unit test file with bash command `php artisan make:test VersionTest --unit`
+4. Write unit test as known from PHPUnit
+5. Run unit test with bash command `php artisan test --filter=VersionTest`
+6. If unit test passed you are done. Not -> Debugging Model -> run unit test again
