@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        DB::table('users')->where('email', 'max.mustermann@gmail.com')->delete();
+        DB::table('users')->where('email', 'max.mustermann@fh-potsdam.de')->delete();
     }
 };
