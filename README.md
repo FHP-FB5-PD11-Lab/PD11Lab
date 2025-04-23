@@ -43,7 +43,7 @@
     ```
 3. In function `down()` in your new migration you can add the data that should be deleted iff rollback will happen:
     ```
-    DB::table('users')->where('email', 'max.mustermann@gmail.com')->delete();
+    DB::table('users')->where('email', 'max.mustermann@fh-potsdam.de')->delete();
     ```
 4. Check your database if data is in the table.
 5. Debugging: For rolling back last migration run `php artisan migrate:rollback` and for complete refresh of database structure `php artisan migrate:fresh`
